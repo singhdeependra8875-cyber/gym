@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "gymdesk",
+  "main": "./worker.js",
+  "compatibility_date": "2026-09-30",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "gymdesk-db",
+      "database_id": "2ffa8e50-16f0-4ac3-92e8-5d93b282b4ea",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

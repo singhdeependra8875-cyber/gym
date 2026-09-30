@@ -2,7 +2,12 @@
   "name": "gymdesk",
   "version": "1.0.0",
   "private": true,
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" },
-  "dependencies": { "better-sqlite3": "^11.3.0", "express": "^4.19.2" }
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "d1:migrate": "wrangler d1 migrations apply gymdesk-db --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.68.0"
+  }
 }
