@@ -157,7 +157,7 @@ document.addEventListener('click',e=>{
     t.disabled=true;
     fetch('/api/change-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({currentPassword,newPassword,confirmationPassword})})
       .then(async r=>({r,data:await r.json().catch(()=>({}))}))
-      .then(({r,data})=>{if(r.ok){login();toast('Password changed. Please log in again.')}else if(r.status===401){login();toast('Your session expired. Please log in again.')}else toast(data.error||'Could not change the password. Try again.')})
+      .then(({r,data})=>{if(r.ok){login();toast('Password changed. Please log in again.')}else if(r.status===401&&data.error==='Login required'){login();toast('Your session expired. Please log in again.')}else toast(data.error||'Could not change the password. Try again.')})
       .catch(()=>toast('Could not reach the server. Please try again.'))
       .finally(()=>{if(document.body.contains(t))t.disabled=false});
   }
